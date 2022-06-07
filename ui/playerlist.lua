@@ -34,7 +34,7 @@ local topbar = Instance.new('TextLabel', frame)
 topbar.Name = '2Topbar'
 topbar.Size = UDim2.new(1, 0, 0.035, 0)
 topbar.TextColor3 = Color3.fromRGB(198, 198, 198)
-topbar.BackgroundTransparency = 0.75
+topbar.BackgroundTransparency = 0.5
 topbar.Text = "Player List"
 topbar.BorderSizePixel = 0
 topbar.Font = Enum.Font.GothamBlack
@@ -44,7 +44,7 @@ Instance.new('UICorner', topbar)
 local tempButton = Instance.new('TextLabel', frame)
 tempButton.Size = UDim2.new(1, 0, 0.035, 0)
 tempButton.TextColor3 = Color3.fromRGB(198, 198, 198)
-tempButton.BackgroundTransparency = 0.75
+tempButton.BackgroundTransparency = 0.25
 tempButton.Text = "Player List"
 tempButton.BorderSizePixel = 0
 tempButton.Font = Enum.Font.GothamBlack
