@@ -1,4 +1,4 @@
-local attribute = game:GetService("HttpService"):GenerateGUID(false)
+local created = {}
 
 local function new (className)
     if className == 'Container' then
@@ -7,11 +7,12 @@ local function new (className)
         screenGui.DisplayOrder = math.pow(2, 31) - 1
         screenGui.IgnoreGuiInset = true
         screenGui.ResetOnSpawn = false
-        screenGui:SetAttribute(attribute, true)
         screenGui.Parent = gethui and gethui() or game:GetService('CoreGui')
+        created[screenGui:GetDebugId(10)] = screenGui
     end
 end
 
 return {
-    new = new
+    new = new,
+    created = created
 }
