@@ -49,14 +49,14 @@ tempButton.Text = "Player List"
 tempButton.BorderSizePixel = 0
 tempButton.Font = Enum.Font.GothamBlack
 tempButton.BackgroundColor3 = Color3.fromRGB(8, 8, 8)
-tempButton.TextSize = 14
+tempButton.TextSize = 12
 tempButton.Visible = false
 Instance.new('UICorner', tempButton)
 
 for _, plr in pairs(players:GetPlayers()) do
     local clone = tempButton:Clone()
     clone.Name = plr.Name
-    clone.Text = plr.Name
+    clone.Text = plr.Name .. ' (@' .. plr.DisplayName .. ')'
     clone.Visible = true
     clone.Parent = frame
 end
@@ -64,7 +64,7 @@ end
 players.PlayerAdded:Connect(function(plr)
     local clone = tempButton:Clone()
     clone.Name = plr.Name
-    clone.Text = plr.Name
+    clone.Text = plr.Name .. ' (@' .. plr.DisplayName .. ')'
     clone.Visible = true
     clone.Parent = frame
 end)
