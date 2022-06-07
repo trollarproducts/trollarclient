@@ -17,7 +17,7 @@ if coreGui:FindFirstChild("PlayerList") then
 end
 
 local container = uiManager.new('Container')
-local frame = Instance.new('ScrollingFrame', container)
+local frame = Instance.new('Frame', container)
 frame.Size = UDim2.new(0.2, 0, 1, 0)
 frame.Position = UDim2.new(0.98, 0, 0, 0)
 frame.AnchorPoint = Vector2.new(0.99, 0)
