@@ -70,9 +70,7 @@ players.PlayerAdded:Connect(function(plr)
 end)
 
 players.PlayerRemoving:Connect(function(plr)
-    local clone = tempButton:Clone()
-    clone.Name = plr.Name
-    clone.Text = plr.Name
-    clone.Visible = true
-    clone.Parent = frame
+    if frame:FindFirstChild(plr.Name) then
+        frame:FindFirstChild(plr.Name):Destroy()
+    end
 end)
