@@ -56,7 +56,7 @@ Instance.new('UICorner', tempButton)
 for _, plr in pairs(players:GetPlayers()) do
     local clone = tempButton:Clone()
     clone.Name = plr.Name
-    clone.Text = plr.Name .. ' (@' .. plr.DisplayName .. ')'
+    clone.Text = plr.DisplayName .. ' (@' .. plr.Name .. ')'
     clone.Visible = true
     clone.Parent = frame
 end
@@ -64,7 +64,7 @@ end
 players.PlayerAdded:Connect(function(plr)
     local clone = tempButton:Clone()
     clone.Name = plr.Name
-    clone.Text = plr.Name .. ' (@' .. plr.DisplayName .. ')'
+    clone.Text = plr.DisplayName .. ' (@' .. plr.Name .. ')'
     clone.Visible = true
     clone.Parent = frame
 end)
