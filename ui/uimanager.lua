@@ -9,6 +9,7 @@ local function new (className)
         screenGui.ResetOnSpawn = false
         screenGui.Parent = gethui and gethui() or game:GetService('CoreGui')
         created[screenGui:GetDebugId(10)] = screenGui
+        return screenGui
     end
 end
 
