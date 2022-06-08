@@ -13,7 +13,15 @@ local function new (className)
     end
 end
 
+local function clearCreated ()
+    for _, inst in pairs(created) do
+        game:GetService("Debris"):AddItem(inst, 0)
+    end
+    created = {}
+end
+
 return {
     new = new,
+    clearCreated = clearCreated,
     created = created
 }

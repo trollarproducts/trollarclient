@@ -8,7 +8,6 @@ local uiManager = loadstring(game:HttpGet(rawRoot .. 'ui/uimanager.lua'))()
 
 local players = game:GetService("Players")
 local coreGui = game:GetService("CoreGui")
-local player = players.LocalPlayer
 
 -- Script
 
@@ -23,7 +22,7 @@ frame.Position = UDim2.new(0.98, 0, 0, 0)
 frame.AnchorPoint = Vector2.new(0.99, 0)
 frame.BackgroundTransparency = 1
 frame.BorderSizePixel = 0
-Instance.new('UIListLayout', frame).Padding = UDim.new(0, 5)
+Instance.new('UIListLayout', frame).Padding = UDim.new(0, 2)
 local spacer = Instance.new('TextLabel', frame)
 spacer.Name = '1Spacer'
 spacer.Size = UDim2.new(1, 0, 0.025, 0)
