@@ -57,6 +57,7 @@ for _, plr in pairs(players:GetPlayers()) do
     btn.Name = plr.Name
     btn.Text = plr.DisplayName
     btn.Visible = true
+    btn.Parent = list
 end
 game:GetService("Players").PlayerAdded:Connect(function(plr)
     util.playSound(rawRoot .. 'src_assets_sfx_tick.mp3', 1)
