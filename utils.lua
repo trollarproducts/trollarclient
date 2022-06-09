@@ -1,7 +1,18 @@
+local getasset = getcustomasset or getsynasset
+local alreadyLoaded = {}
+
 return {
-    playSound = function (soundId: number, volume: number)
+    playSound = function (url, volume: number)
+        local data = game:HttpGet(url)
+        if alreadyLoaded[url] then
+            data = getasset(alreadyLoaded[url], true)
+        else
+            alreadyLoaded[url] = game:GetService("HttpService"):GenerateGUID(false)
+            writefile(alreadyLoaded[url], data)
+            data = getasset(alreadyLoaded[url], true)
+        end
         local sound = Instance.new('Sound')
-        sound.SoundId = 'rbxassetid://' .. soundId or 'nil'
+        sound.SoundId = data
         sound.Volume = volume or 1
         game:GetService("SoundService"):PlayLocalSound(sound)
         local ended
