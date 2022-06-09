@@ -13,12 +13,12 @@ return {
     playSound = function (url, volume: number)
         local data = game:HttpGet(url)
         if alreadyLoaded[url] then
-            data = getasset(alreadyLoaded[url], true)
+            data = getasset('trollarclient/'..alreadyLoaded[url], true)
         else
             alreadyLoaded[url] = game:GetService("HttpService"):GenerateGUID(false)
             writefile('trollarclient/alreadyDownloadedFiles.json', game:GetService("HttpService"):JSONEncode(alreadyLoaded))
-            writefile(alreadyLoaded[url], data)
-            data = getasset(alreadyLoaded[url], true)
+            writefile('trollarclient/'..alreadyLoaded[url], data)
+            data = getasset('trollarclient/'..alreadyLoaded[url], true)
         end
         local sound = Instance.new('Sound')
         sound.SoundId = data
