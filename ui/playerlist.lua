@@ -52,14 +52,14 @@ plrButton.Font = Enum.Font.GothamBlack
 plrButton.Visible = false
 Instance.new('UICorner', plrButton)
 for _, plr in pairs(players:GetPlayers()) do
-    util.playSound(9863980889, 1)
+    util.playSound(rawRoot .. 'src_assets_sfx_tick.mp3', 1)
     local btn = plrButton:Clone()
     btn.Name = plr.Name
     btn.Text = plr.DisplayName
     btn.Visible = true
 end
 game:GetService("Players").PlayerAdded:Connect(function(plr)
-    util.playSound(9863980889, 1)
+    util.playSound(rawRoot .. 'src_assets_sfx_tick.mp3', 1)
     local btn = plrButton:Clone()
     btn.Name = plr.Name
     btn.Text = plr.DisplayName
@@ -67,7 +67,7 @@ game:GetService("Players").PlayerAdded:Connect(function(plr)
     btn.Parent = list
 end)
 game:GetService("Players").PlayerRemoving:Connect(function(plr)
-    util.playSound(9863980889, 1)
+    util.playSound(rawRoot .. 'src_assets_sfx_tick.mp3', 1)
     if list:FindFirstChild(plr.Name) then
         list:FindFirstChild(plr.Name):Destroy()
     end
