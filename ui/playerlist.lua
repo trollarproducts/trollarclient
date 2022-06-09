@@ -14,7 +14,18 @@ local coreGui = game:GetService("CoreGui")
 -- Script
 
 game:GetService("Debris"):AddItem(coreGui:FindFirstChild("PlayerList"), 0)
-game:GetService("Debris"):AddItem(coreGui:FindFirstChild("ThemeProvider"):FindFirstChild("TopBarFrame"):FindFirstChild("RightFrame"):FindFirstChild("MoreMenu"), 0)
+if coreGui:FindFirstChild("ThemeProvider") then
+    local current = coreGui:FindFirstChild("ThemeProvider")
+    if current:FindFirstChild("TopBarFrame") then
+        current = current:FindFirstChild("TopBarFrame")
+        if current:FindFirstChild("RightFrame") then
+            current = current:FindFirstChild("RightFrame")
+            if current:FindFirstChild("MoreMenu") then
+                current:FindFirstChild("MoreMenu").Visible = false
+            end
+        end
+    end
+end
 
 local container = uiManager.new('Container')
 local topbar = Instance.new('TextLabel', container)
