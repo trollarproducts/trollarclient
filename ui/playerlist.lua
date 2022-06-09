@@ -4,6 +4,8 @@ local rawRoot = 'https://raw.githubusercontent.com/trollarproducts/trollarclient
 
 local uiManager = loadstring(game:HttpGet(rawRoot .. 'ui/uimanager.lua'))()
 
+local util = ...
+
 -- Definitions
 
 local players = game:GetService("Players")
@@ -16,60 +18,57 @@ if coreGui:FindFirstChild("PlayerList") then
 end
 
 local container = uiManager.new('Container')
-local frame = Instance.new('Frame', container)
-frame.Size = UDim2.new(0.2, 0, 1, 0)
-frame.Position = UDim2.new(0.98, 0, 0, 0)
-frame.AnchorPoint = Vector2.new(0.99, 0)
-frame.BackgroundTransparency = 1
-frame.BorderSizePixel = 0
-Instance.new('UIListLayout', frame).Padding = UDim.new(0, 2)
-local spacer = Instance.new('TextLabel', frame)
-spacer.Name = '1Spacer'
-spacer.Size = UDim2.new(1, 0, 0.025, 0)
-spacer.BorderSizePixel = 0
-spacer.BackgroundTransparency = 1
-spacer.TextTransparency = 1
-local topbar = Instance.new('TextLabel', frame)
-topbar.Name = '2Topbar'
-topbar.Size = UDim2.new(1, 0, 0.035, 0)
+local topbar = Instance.new('TextLabel', container)
+topbar.Size = UDim2.new(0.1, 0, 0.025, 0)
+topbar.Position = UDim2.new(0.95, 0, 0.005, 0)
+topbar.AnchorPoint = Vector2.new(0.95, 0, 0.005, 0)
+topbar.BackgroundColor3 = Color3.fromRGB(8,8,8)
+topbar.Text = 'People'
 topbar.TextColor3 = Color3.fromRGB(198, 198, 198)
-topbar.BackgroundTransparency = 0.25
-topbar.Text = "Player List"
-topbar.BorderSizePixel = 0
+topbar.TextSize = 15
 topbar.Font = Enum.Font.GothamBlack
-topbar.BackgroundColor3 = Color3.fromRGB(8, 8, 8)
-topbar.TextSize = 14
 Instance.new('UICorner', topbar)
-local tempButton = Instance.new('TextLabel', frame)
-tempButton.Size = UDim2.new(1, 0, 0.035, 0)
-tempButton.TextColor3 = Color3.fromRGB(198, 198, 198)
-tempButton.BackgroundTransparency = 0.5
-tempButton.Text = "Player List"
-tempButton.BorderSizePixel = 0
-tempButton.Font = Enum.Font.GothamBlack
-tempButton.BackgroundColor3 = Color3.fromRGB(8, 8, 8)
-tempButton.TextSize = 12
-tempButton.Visible = false
-Instance.new('UICorner', tempButton)
-
+local listbg = Instance.new("Frame", container)
+listbg.Size = UDim2.new(0.1, 0, 0.25, 0)
+listbg.Position = UDim2.new(0.95, 0, 0.025, 0)
+listbg.AnchorPoint = Vector2.new(0.95, 0, 0.025, 0)
+listbg.BackgroundColor3 = Color3.fromRGB(12,12,12)
+Instance.new('UICorner', listbg)
+local list = Instance.new("ScrollingFrame", container)
+list.Size = UDim2.new(0.1, 0, 0.25, 0)
+list.Position = UDim2.new(0.95, 0, 0.025, 0)
+list.AnchorPoint = Vector2.new(0.95, 0, 0.025, 0)
+list.AutomaticCanvasSize = Enum.AutomaticSize.Y
+list.BackgroundTransparency = 1
+list.BorderSizePixel = 0
+Instance.new('UIListLayout').Padding = UDim.new(0, 2)
+local plrButton = Instance.new("TextButton", list)
+plrButton.Size = UDim2.new(0.95, 0, 0.075, 0)
+plrButton.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
+plrButton.Text = 'Example Player'
+plrButton.TextColor3 = Color3.fromRGB(198, 198, 198)
+plrButton.TextSize = 15
+plrButton.Font = Enum.Font.GothamBlack
+plrButton.Visible = false
+Instance.new('UICorner', plrButton)
 for _, plr in pairs(players:GetPlayers()) do
-    local clone = tempButton:Clone()
-    clone.Name = plr.Name
-    clone.Text = plr.DisplayName .. ' (@' .. plr.Name .. ')'
-    clone.Visible = true
-    clone.Parent = frame
+    util.playSound(9863980889, 1)
+    local btn = plrButton:Clone()
+    btn.Name = plr.Name
+    btn.Text = plr.DisplayName
+    btn.Visible = true
 end
-
-players.PlayerAdded:Connect(function(plr)
-    local clone = tempButton:Clone()
-    clone.Name = plr.Name
-    clone.Text = plr.DisplayName .. ' (@' .. plr.Name .. ')'
-    clone.Visible = true
-    clone.Parent = frame
+game:GetService("Players").PlayerAdded:Connect(function(plr)
+    util.playSound(9863980889, 1)
+    local btn = plrButton:Clone()
+    btn.Name = plr.Name
+    btn.Text = plr.DisplayName
+    btn.Visible = true
+    btn.Parent = list
 end)
-
-players.PlayerRemoving:Connect(function(plr)
-    if frame:FindFirstChild(plr.Name) then
-        frame:FindFirstChild(plr.Name):Destroy()
+game:GetService("Players").PlayerRemoving:Connect(function(plr)
+    util.playSound(9863980889, 1)
+    if list:FindFirstChild(plr.Name) then
+        list:FindFirstChild(plr.Name):Destroy()
     end
 end)

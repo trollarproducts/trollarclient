@@ -2,8 +2,11 @@
 
 local rawRoot = 'https://raw.githubusercontent.com/trollarproducts/trollarclient/main/'
 
-local playerList = game:HttpGet(rawRoot .. 'ui/playerlist.lua')
+local playerlist = game:HttpGet(rawRoot .. 'ui/playerlist.lua')
+
+local utils = loadstring(game:HttpGet(rawRoot .. 'utils.lua'))()
 
 -- Load content
 
-loadstring(playerList, 'playerlist')()
+loadstring(playerlist, 'playerlist')(utils)
+loadstring(taskbar, 'taskbar')(utils)
