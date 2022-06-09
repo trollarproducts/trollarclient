@@ -1,5 +1,10 @@
 local getasset = getcustomasset or getsynasset
-local alreadyLoaded = {}
+local alreadyLoaded
+if isfile('trollarclient/settings.json') then
+    alreadyLoaded = game:GetService("HttpService"):JSONDecode(readfile('trollarclient/alreadyDownloadedFiles.json'))
+else
+    alreadyLoaded = {}
+end
 
 return {
     playSound = function (url, volume: number)
@@ -8,6 +13,7 @@ return {
             data = getasset(alreadyLoaded[url], true)
         else
             alreadyLoaded[url] = game:GetService("HttpService"):GenerateGUID(false)
+            writefile('trollarclient/alreadyDownloadedFiles.json', game:GetService("HttpService"):JSONEncode(alreadyLoaded))
             writefile(alreadyLoaded[url], data)
             data = getasset(alreadyLoaded[url], true)
         end
