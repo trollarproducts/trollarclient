@@ -1,5 +1,8 @@
 local getasset = getcustomasset or getsynasset
 local alreadyLoaded
+if not isfolder('trollarclient') then
+    makefolder('trollarclient')
+end
 if isfile('trollarclient/settings.json') then
     alreadyLoaded = game:GetService("HttpService"):JSONDecode(readfile('trollarclient/alreadyDownloadedFiles.json'))
 else
