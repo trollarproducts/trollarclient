@@ -9,4 +9,3 @@ local utils = loadstring(game:HttpGet(rawRoot .. 'utils.lua'))()
 -- Load content
 
 loadstring(playerlist, 'playerlist')(utils)
-loadstring(taskbar, 'taskbar')(utils)
