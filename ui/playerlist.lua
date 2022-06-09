@@ -10,6 +10,7 @@ local util = ...
 
 local players = game:GetService("Players")
 local coreGui = game:GetService("CoreGui")
+local robloxGui = coreGui:FindFirstChild("RobloxGui") or nil
 
 -- Script
 
@@ -83,3 +84,16 @@ game:GetService("Players").PlayerRemoving:Connect(function(plr)
         list:FindFirstChild(plr.Name):Destroy()
     end
 end)
+
+-- Hide on pause menu opening
+
+if robloxGui then
+    if robloxGui:FindFirstChild("SettingsShield") then
+        if robloxGui:FindFirstChild("SettingsShield"):FindFirstChild("SettingsShield") then
+            local shield = robloxGui:FindFirstChild("SettingsShield"):FindFirstChild("SettingsShield")
+            shield:GetPropertyChangedSignal('Visible'):Connect(function()
+                container.Enabled = not shield.Visible
+            end)
+        end
+    end
+end
