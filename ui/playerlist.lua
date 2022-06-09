@@ -13,9 +13,8 @@ local coreGui = game:GetService("CoreGui")
 
 -- Script
 
-if coreGui:FindFirstChild("PlayerList") then
-    coreGui:FindFirstChild("PlayerList"):Destroy()
-end
+game:GetService("Debris"):AddItem(coreGui:FindFirstChild("PlayerList"), 0)
+game:GetService("Debris"):AddItem(coreGui:FindFirstChild("ThemeProvider"):FindFirstChild("TopBarFrame"):FindFirstChild("RightFrame"):FindFirstChild("MoreMenu"), 0)
 
 local container = uiManager.new('Container')
 local topbar = Instance.new('TextLabel', container)
