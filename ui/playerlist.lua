@@ -109,7 +109,7 @@ end
 
 -- Delete on trollarclient removal
 
-events.trollarclientremoved = util.getEvent('delete'):Connect(function()
+events.trollarclientremoved = util.getEvent('delete').Event:Connect(function()
     for _, v in pairs(events) do
         v:Disconnect()
     end
