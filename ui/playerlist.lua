@@ -76,7 +76,7 @@ for _, plr in pairs(players:GetPlayers()) do
     btn.Parent = list
 end
 events.playerAdded = game:GetService("Players").PlayerAdded:Connect(function(plr)
-    util.playSound(rawRoot .. 'src_assets_sfx_tick.mp3', 1)
+    util.playSound(rawRoot .. 'join.mp3', 1)
     local btn = plrButton:Clone()
     btn.Name = plr.Name
     btn.Text = plr.DisplayName
@@ -84,7 +84,7 @@ events.playerAdded = game:GetService("Players").PlayerAdded:Connect(function(plr
     btn.Parent = list
 end)
 events.playerRemoving = game:GetService("Players").PlayerRemoving:Connect(function(plr)
-    util.playSound(rawRoot .. 'src_assets_sfx_tick.mp3', 1)
+    util.playSound(rawRoot .. 'leave.mp3', 1)
     if list:FindFirstChild(plr.Name) then
         list:FindFirstChild(plr.Name):Destroy()
     end
