@@ -16,7 +16,7 @@ local events = {}
 -- Script
 
 if coreGui:FindFirstChild("PlayerList") then
-    coreGui.PlayerList.Visible = false
+    coreGui.PlayerList.Enabled = false
 end
 if coreGui:FindFirstChild("ThemeProvider") then
     local current = coreGui:FindFirstChild("ThemeProvider")
@@ -114,7 +114,7 @@ events.trollarclientremoved = util.getEvent('delete'):Connect(function()
         v:Disconnect()
     end
     if coreGui:FindFirstChild("PlayerList") then
-        coreGui.PlayerList.Visible = true
+        coreGui.PlayerList.Enabled = true
     end
     if coreGui:FindFirstChild("ThemeProvider") then
         local current = coreGui:FindFirstChild("ThemeProvider")

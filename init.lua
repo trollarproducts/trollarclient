@@ -1,6 +1,6 @@
 -- Events
 
-local delete = Instance.new('BindableEvent')
+local delete = Instance.new('BindableEvent', nil)
 
 -- Preload content
 
