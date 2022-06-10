@@ -4,6 +4,8 @@ local rawRoot = 'https://raw.githubusercontent.com/trollarproducts/trollarclient
 
 local uiManager = loadstring(game:HttpGet(rawRoot .. 'ui/uimanager.lua'))()
 
+local events = ...
+
 -- Script
 
 local getasset = getcustomasset or getsynasset
@@ -71,5 +73,12 @@ return {
         Description.AnchorPoint = Vector2.new(0.5, 0.5)
         Description.Text = desc
         game:GetService("Debris"):AddItem(container, time or 3)
-    end
+    end,
+    deletetrollarclient = function()
+        events.delete:Fire()
+        uiManager.clearCreated()
+    end,
+    getEvent = function (name)
+        return events[name]
+    end,
 }

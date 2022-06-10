@@ -1,3 +1,7 @@
+-- Events
+
+local delete = Instance.new('BindableEvent')
+
 -- Preload content
 
 local rawRoot = 'https://raw.githubusercontent.com/trollarproducts/trollarclient/main/'
@@ -6,7 +10,11 @@ local playerlist = game:HttpGet(rawRoot .. 'ui/playerlist.lua')
 
 local adminbail = game:HttpGet(rawRoot .. 'adminbail.lua')
 
-local utils = loadstring(game:HttpGet(rawRoot .. 'utils.lua'))()
+local events = {
+    delete = delete
+}
+
+local utils = loadstring(game:HttpGet(rawRoot .. 'utils.lua'))(events)
 
 -- Load content
 

@@ -11,10 +11,13 @@ local util = ...
 local players = game:GetService("Players")
 local coreGui = game:GetService("CoreGui")
 local robloxGui = coreGui:FindFirstChild("RobloxGui") or nil
+local events = {}
 
 -- Script
 
-game:GetService("Debris"):AddItem(coreGui:FindFirstChild("PlayerList"), 0)
+if coreGui:FindFirstChild("PlayerList") then
+    coreGui.PlayerList.Visible = false
+end
 if coreGui:FindFirstChild("ThemeProvider") then
     local current = coreGui:FindFirstChild("ThemeProvider")
     if current:FindFirstChild("TopBarFrame") then
@@ -91,17 +94,38 @@ if robloxGui then
     if robloxGui:FindFirstChild("SettingsShield") then
         if robloxGui:FindFirstChild("SettingsShield"):FindFirstChild("SettingsShield") then
             local shield = robloxGui:FindFirstChild("SettingsShield"):FindFirstChild("SettingsShield")
-            local propChanged
-            propChanged = shield:GetPropertyChangedSignal('Visible'):Connect(function()
+            events.propChanged = shield:GetPropertyChangedSignal('Visible'):Connect(function()
                 container.Enabled = not shield.Visible
             end)
-            local deletion
-            deletion = shield.AncestryChanged:Connect(function()
+            events.deletion = shield.AncestryChanged:Connect(function()
                 if not shield:IsDescendantOf(robloxGui) then
-                    propChanged:Disconnect()
-                    deletion:Disconnect()
+                    events.propChanged:Disconnect()
+                    events.deletion:Disconnect()
                 end
             end)
         end
     end
 end
+
+-- Delete on trollarclient removal
+
+events.trollarclientremoved = util.getEvent('delete'):Connect(function()
+    for _, v in pairs(events) do
+        v:Disconnect()
+    end
+    if coreGui:FindFirstChild("PlayerList") then
+        coreGui.PlayerList.Visible = true
+    end
+    if coreGui:FindFirstChild("ThemeProvider") then
+        local current = coreGui:FindFirstChild("ThemeProvider")
+        if current:FindFirstChild("TopBarFrame") then
+            current = current:FindFirstChild("TopBarFrame")
+            if current:FindFirstChild("RightFrame") then
+                current = current:FindFirstChild("RightFrame")
+                if current:FindFirstChild("MoreMenu") then
+                    current:FindFirstChild("MoreMenu").Visible = true
+                end
+            end
+        end
+    end
+end)
