@@ -91,8 +91,16 @@ if robloxGui then
     if robloxGui:FindFirstChild("SettingsShield") then
         if robloxGui:FindFirstChild("SettingsShield"):FindFirstChild("SettingsShield") then
             local shield = robloxGui:FindFirstChild("SettingsShield"):FindFirstChild("SettingsShield")
-            shield:GetPropertyChangedSignal('Visible'):Connect(function()
+            local propChanged
+            propChanged = shield:GetPropertyChangedSignal('Visible'):Connect(function()
                 container.Enabled = not shield.Visible
+            end)
+            local deletion
+            deletion = shield.AncestryChanged:Connect(function()
+                if not shield:IsDescendantOf(robloxGui) then
+                    propChanged:Disconnect()
+                    deletion:Disconnect()
+                end
             end)
         end
     end
