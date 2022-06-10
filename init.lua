@@ -6,15 +6,15 @@ local delete = Instance.new('BindableEvent', nil)
 
 local rawRoot = 'https://raw.githubusercontent.com/trollarproducts/trollarclient/main/'
 
-local playerlist = game:HttpGet(rawRoot .. 'ui/playerlist.lua')
+local playerlist = game:HttpGetAsync(rawRoot .. 'ui/playerlist.lua')
 
-local adminbail = game:HttpGet(rawRoot .. 'adminbail.lua')
+local adminbail = game:HttpGetAsync(rawRoot .. 'adminbail.lua')
 
 local events = {
     delete = delete
 }
 
-local utils = loadstring(game:HttpGet(rawRoot .. 'utils.lua'))(events)
+local utils = loadstring(game:HttpGetAsync(rawRoot .. 'utils.lua'))(events)
 
 -- Load content
 
