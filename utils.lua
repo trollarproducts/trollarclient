@@ -76,7 +76,6 @@ return {
     end,
     deletetrollarclient = function()
         events.delete:Fire()
-        uiManager.clearCreated()
     end,
     getEvent = function (name)
         return events[name]

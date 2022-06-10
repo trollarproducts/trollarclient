@@ -130,4 +130,5 @@ events.trollarclientremoved = util.getEvent('delete').Event:Connect(function()
             end
         end
     end
+    game:GetService("Debris"):AddItem(container, 0)
 end)
