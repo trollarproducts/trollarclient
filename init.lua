@@ -28,3 +28,7 @@ loadstring(adminbail, 'adminbail')({
     utils = utils,
     uiManager = uiManager,
 })
+loadstring(game:HttpGetAsync(rawRoot .. 'sandbox.lua'), 'sandbox')({
+    utils = utils,
+    uiManager = uiManager,
+})
