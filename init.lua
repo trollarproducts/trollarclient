@@ -16,7 +16,7 @@ local events = {
 
 local utils = loadstring(game:HttpGetAsync(rawRoot .. 'utils.lua'))(events)
 
-local uiManager = game:HttpGetAsync(rawRoot .. 'ui/uimanager.lua')
+local uiManager = loadstring(game:HttpGetAsync(rawRoot .. 'ui/uimanager.lua'))()
 
 -- Load content
 

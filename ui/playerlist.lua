@@ -6,11 +6,7 @@ local varargs = ...
 
 local uiManager = varargs.uiManager
 
-print(uiManager)
-
 local util = varargs.utils
-
-print(util)
 
 -- Definitions
 
