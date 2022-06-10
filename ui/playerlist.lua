@@ -2,9 +2,11 @@
 
 local rawRoot = 'https://raw.githubusercontent.com/trollarproducts/trollarclient/main/'
 
-local uiManager = loadstring(game:HttpGet(rawRoot .. 'ui/uimanager.lua'))()
+local varargs = ...
 
-local util = ...
+local uiManager = varargs.uiManager
+
+local util = varargs.utils
 
 -- Definitions
 
