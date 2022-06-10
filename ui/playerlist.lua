@@ -68,7 +68,7 @@ plrButton.Font = Enum.Font.GothamBlack
 plrButton.Visible = false
 Instance.new('UICorner', plrButton)
 for _, plr in pairs(players:GetPlayers()) do
-    util.playSound(rawRoot .. 'src_assets_sfx_tick.mp3', 1)
+    util.playSound(rawRoot .. 'tick.mp3', 1)
     local btn = plrButton:Clone()
     btn.Name = plr.Name
     btn.Text = plr.DisplayName
