@@ -49,9 +49,9 @@ game:GetService("Players").PlayerAdded:Connect(function(player)
             end
         end
         if found then
-            util.notif('trollarbail', 'We have detected a potential staff member inside your game', 3)
+            util.notif('trollarbail', 'This user '..player.Name..' is a potential staff member inside your game.', 2)
         end
     elseif player.UserId == game.CreatorId or player:IsFriendsWith(game.CreatorId) then
-        util.notif('trollarbail', 'An owner or a friend of the owner has joined your game.', 3)
+        util.notif('trollarbail', 'An owner or a friend of the owner has joined your game.', 2)
     end
 end)
