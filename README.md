@@ -1,2 +1,3 @@
 # trollarclient
-a roblox client with sandboxing functionality
+
+`loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/trollarproducts/trollarclient/main/init.lua'))()`
