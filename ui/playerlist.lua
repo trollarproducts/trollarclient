@@ -86,7 +86,9 @@ end)
 events.playerRemoving = game:GetService("Players").PlayerRemoving:Connect(function(plr)
     util.playSound(rawRoot .. 'leave.mp3', 1)
     if list:FindFirstChild(plr.Name) then
-        list:FindFirstChild(plr.Name):Destroy()
+        game:GetService("TweenService"):Create(list:FindFirstChild(plr.Name), TweenInfo.new(0.5), {TextTransparency = 1, BackgroundTransparency = 1}):Play()
+
+        game:GetService("Debris"):AddItem(list:FindFirstChild(plr.Name), 0.51)
     end
 end)
 
