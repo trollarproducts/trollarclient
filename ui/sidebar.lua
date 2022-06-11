@@ -56,6 +56,8 @@ for name, data in pairs(btns) do
     label.BorderSizePixel = 0
 end
 
+-- Show when pause menu is open
+
 if robloxGui then
     if robloxGui:FindFirstChild("SettingsShield") then
         if robloxGui:FindFirstChild("SettingsShield"):FindFirstChild("SettingsShield") then
