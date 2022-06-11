@@ -8,6 +8,8 @@ local rawRoot = 'https://raw.githubusercontent.com/trollarproducts/trollarclient
 
 local playerlist = game:HttpGetAsync(rawRoot .. 'ui/playerlist.lua')
 
+local sidebar = game:HttpGetAsync(rawRoot .. 'ui/sidebar.lua')
+
 local adminbail = game:HttpGetAsync(rawRoot .. 'adminbail.lua')
 
 local events = {
@@ -21,6 +23,10 @@ local uiManager = loadstring(game:HttpGetAsync(rawRoot .. 'ui/uimanager.lua'))()
 -- Load content
 
 loadstring(playerlist, 'playerlist')({
+    utils = utils,
+    uiManager = uiManager,
+})
+loadstring(sidebar, 'sidebar')({
     utils = utils,
     uiManager = uiManager,
 })
