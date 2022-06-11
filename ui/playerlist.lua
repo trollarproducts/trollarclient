@@ -96,6 +96,7 @@ if robloxGui then
     if robloxGui:FindFirstChild("SettingsShield") then
         if robloxGui:FindFirstChild("SettingsShield"):FindFirstChild("SettingsShield") then
             local shield = robloxGui:FindFirstChild("SettingsShield"):FindFirstChild("SettingsShield")
+            container.Enabled = not shield.Visible
             events.propChanged = shield:GetPropertyChangedSignal('Visible'):Connect(function()
                 container.Enabled = not shield.Visible
             end)
